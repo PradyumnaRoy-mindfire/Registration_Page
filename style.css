@@ -13,7 +13,7 @@ body {
 }
     
 .container1 {
-    width: 30%;
+    width: 30%;;
     padding: 5px;
     margin: 15px;               /*margin properties are used to create space around elements, outside of any defined borders. */
     border-top: 3px solid rgb(116, 100, 100);    
@@ -71,13 +71,14 @@ label{
 }
 
 #submit {
-    
+    font-size: 20px;
     height: 35px;
     border-radius: 7px;
     color: white;
     font-weight: bolder;
     background-color: aqua;
     border: none;
+    box-shadow: 0px 0px 4px 4px rgb(128, 119, 119);
 }
 .input-address, .input-name {
     display: flex;
@@ -101,19 +102,26 @@ table,th,td {
 }
 table {
     width: 100%;  /*To take the total width*/
-    
+
 }
 tr:nth-child(even) {
     background-color: #b0b8b8;
 }
-.btn {
-    
-}
+
 
 /* #gendr label,input{
     padding: 5px;
     
 } */
 
+/* Media Queries to have an alternate CSS section right inside your style sheet. */
+@media screen and (max-width: 935px) {
+    .container {
+      flex-direction: column;
+    }
+    .container1,.container2 {
+        width: 100%;
+    }
+}
 
 
