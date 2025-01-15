@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="container1">
+            <h2>Registration Form</h2>
+            <div class="form-container">
+                <form action="" id="form" onsubmit="func(event)">
+
+                    <div class="input-name">
+                        <label for="fname">First Name</label>
+                        <input type="text" name="fname" placeholder="Enter Firstname" required class="inp-typ1">
+                    </div>
+
+                    <div class="input-name">
+                        <label for="lname">Last Name</label>
+                        <input type="text" name="fname" placeholder="Enter Lastname" required class="inp-typ1">
+                    </div>
+
+                    <div class="input-name">
+                        <label for="password">Password</label>
+                        <input type="password" name="password"
+                            placeholder="Must be 8 characters,one special characters,one number and alphabets" required
+                            class="inp-typ1">
+                    </div>
+
+                    <div class="input-name">
+                        <label for="empid">EmployeeId</label>
+                        <input type="number" name="empid" placeholder="eg:123456" required class="inp-typ1">
+                    </div>
+
+                    <div class="input-name">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" placeholder="eg:example@email.com " class="inp-typ1">
+                    </div>
+
+                    <div id="gendr">
+                        <label for="gender">Gender</label>
+                        <input type="radio" name="gender">Male
+                        <input type="radio" name="gender">Female
+                        <input type="radio" name="gender">Others
+                    </div>
+
+                    <div class="input-name">
+                        <label for="address">Address:</label>
+
+                        <div class="input-address">
+                            <label for="">Country/Region</label>
+                            <input type="text" placeholder="Country or Region" class="inp-addr">
+                        </div>
+
+                        <div class="input-address">
+                            <label for="">State</label>
+                            <input type="text" placeholder="State" class="inp-addr">
+                        </div>
+
+                        <div class="input-address">
+                            <label for="">City</label>
+                            <input type="text" placeholder="City" class="inp-addr">
+                        </div>
+
+                        <div class="input-address">
+                            <label for="">Landmark</label>
+                            <input type="text" placeholder="Landmark" class="inp-addr">
+                        </div>
+
+                        <div class="input-address">
+                            <label for="">Pincode</label>
+                            <input type="text" placeholder="Pincode" class="inp-addr">
+                        </div>
+
+                    </div>
+
+                    <div id="check">
+                        <input type="checkbox" name="terms" required>
+                        <label for="terms">I accept the <a href="#">Terms & Condition</a></label>
+                    </div>
+
+                    <div class="input-name">
+                        <input type="submit" value="Submit" id="submit">
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+        <div class="container2">
+            <h2>Details</h2>
+            <table>
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>EmployeeId</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>Madhusudan</td>
+                    <td>Pal</td>
+                    <td>254786</td>
+                    <td>ab@gmail.com</td>
+                    <td>Folder</td>
+                    <td>Baleswar</td>
+                    <td><button class="btn">Edit</button>
+                        <button class="btn">Delete</button></td>
+                </tr>
+                <tr>
+                    <td>Madhusudan</td>
+                    <td>Pal</td>
+                    <td>254786</td>
+                    <td>ab@gmail.com</td>
+                    <td>Folder</td>
+                </tr>
+                <tr>
+                    <td>Madhusudan</td>
+                    <td>Pal</td>
+                    <td>254786</td>
+                    <td>ab@gmail.com</td>
+                    <td>Folder</td>
+                </tr>
+                <tr>
+                    <td>Madhusudan</td>
+                    <td>Pal</td>
+                    <td>254786</td>
+                    <td>ab@gmail.com</td>
+                    <td>Folder</td>
+                    <td>Bhubaneswardfgsdfsdgfdsgsdfdfhhgdhdfzgfsgfdgdsgfdsgsfdgdsgsdgfdgdsgfdsgdsggdhdf</td>
+                   
+                    
+                    
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+
+    <script>
+        function func(event) {
+            event.preventDefault();    /* to stop the auto submit */
+
+        }
+    </script>
+</body>
+
+</html>
