@@ -106,6 +106,9 @@ table {
 tr:nth-child(even) {
     background-color: #b0b8b8;
 }
+.btn {
+    
+}
 
 /* #gendr label,input{
     padding: 5px;
