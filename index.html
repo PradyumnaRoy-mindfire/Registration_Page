@@ -15,40 +15,40 @@
         <div class="container1">
             <h2>Registration Form</h2>
             <div class="form-container">
-                <form action="" id="form" onsubmit="func(event)">
+                <form action="" id="form" onsubmit="autoSubmit(event)">
 
                     <div class="input-name">
                         <label for="fname">First Name</label>
-                        <input type="text" name="fname" placeholder="Enter Firstname" required class="inp-typ1">
+                        <input type="text" name="fname" placeholder="Enter Firstname" class="inp-typ1" id="fname">
                     </div>
 
                     <div class="input-name">
                         <label for="lname">Last Name</label>
-                        <input type="text" name="fname" placeholder="Enter Lastname" required class="inp-typ1">
+                        <input type="text" name="lname" placeholder="Enter Lastname" class="inp-typ1" id="lname">
                     </div>
 
                     <div class="input-name">
                         <label for="password">Password</label>
                         <input type="password" name="password"
-                            placeholder="Must be 8 characters,one special characters,one number and alphabets" required
-                            class="inp-typ1">
+                            placeholder="Must be 8 characters,one special characters,one number and alphabets" 
+                            class="inp-typ1" id="pass">
                     </div>
 
                     <div class="input-name">
-                        <label for="empid">EmployeeId</label>
-                        <input type="number" name="empid" placeholder="eg:123456" required class="inp-typ1">
+                        <label for="phno">Phone Number</label>
+                        <input type="number" name="empid" placeholder="eg:123456" class="inp-typ1" id="phno">
                     </div>
 
                     <div class="input-name">
                         <label for="email">Email</label>
-                        <input type="email" name="email" placeholder="eg:example@email.com " class="inp-typ1">
+                        <input type="email" name="email" placeholder="eg:example@email.com " class="inp-typ1" id="email">
                     </div>
 
                     <div id="gendr">
                         <label for="gender">Gender</label>
-                        <input type="radio" name="gender">Male
-                        <input type="radio" name="gender">Female
-                        <input type="radio" name="gender">Others
+                        <input type="radio" name="gender" value="Male" checked>Male
+                        <input type="radio" name="gender" value="Female">Female
+                        <input type="radio" name="gender" value="Others">Others
                     </div>
 
                     <div class="input-name">
@@ -56,33 +56,33 @@
 
                         <div class="input-address">
                             <label for="">Country/Region</label>
-                            <input type="text" placeholder="Country or Region" class="inp-addr">
+                            <input type="text" placeholder="Country or Region" class="inp-addr" id="country">
                         </div>
 
                         <div class="input-address">
                             <label for="">State</label>
-                            <input type="text" placeholder="State" class="inp-addr">
+                            <input type="text" placeholder="State" class="inp-addr" id="state">
                         </div>
 
                         <div class="input-address">
                             <label for="">City</label>
-                            <input type="text" placeholder="City" class="inp-addr">
+                            <input type="text" placeholder="City" class="inp-addr" id="city">
                         </div>
 
                         <div class="input-address">
                             <label for="">Landmark</label>
-                            <input type="text" placeholder="Landmark" class="inp-addr">
+                            <input type="text" placeholder="Landmark" class="inp-addr" id="landmark">
                         </div>
 
                         <div class="input-address">
                             <label for="">Pincode</label>
-                            <input type="text" placeholder="Pincode" class="inp-addr">
+                            <input type="text" placeholder="Pincode" class="inp-addr" id="pin">
                         </div>
 
                     </div>
 
                     <div id="check">
-                        <input type="checkbox" name="terms" required>
+                        <input type="checkbox" name="terms" id="terms">
                         <label for="terms">I accept the <a href="#">Terms & Condition</a></label>
                     </div>
 
@@ -97,17 +97,22 @@
 
         <div class="container2">
             <h2>Details</h2>
-            <table>
-                <tr>
-                    <th>FirstName</th>
-                    <th>LastName</th>
-                    <th>EmployeeId</th>
-                    <th>Email</th>
-                    <th>Gender</th>
-                    <th>Address</th>
-                    <th>Action</th>
-                </tr>
-                <tr>
+            <table id="table">
+                
+                    <tr>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>PhoneNo</th>
+                        <th>Email</th>
+                        <th>Gender</th>
+                        <th>Landmark</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Country</th>
+                        <th>Pincode</th>
+                        <th>Action</th>
+                    </tr>
+                <!-- <tr>
                     <td>Madhusudan</td>
                     <td>Pal</td>
                     <td>254786</td>
@@ -141,19 +146,14 @@
                    
                     
                     
-                </tr>
+                </tr> -->
 
             </table>
 
         </div>
     </div>
 
-    <script>
-        function func(event) {
-            event.preventDefault();    /* to stop the auto submit */
-
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
