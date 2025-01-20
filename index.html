@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
@@ -18,37 +21,68 @@
                 <form action="" id="form" onsubmit="autoSubmit(event)">
 
                     <div class="input-name">
-                        <label for="fname">First Name</label>
-                        <input type="text" name="fname" placeholder="Enter Firstname" class="inp-typ1" id="fname">
+                        <label for="fname" class="redStar">First Name</label>
+
+                        <input type="text" name="fname" placeholder="Enter Firstname" class="inp-typ1" id="fname" oninput="hideError(name)">
+
+                        <span id="fname-err" class="err-msg"></span>
+
                     </div>
 
                     <div class="input-name">
                         <label for="lname">Last Name</label>
+
                         <input type="text" name="lname" placeholder="Enter Lastname" class="inp-typ1" id="lname">
+
+                        <span id="lname-err" class="err-msg"></span>
                     </div>
 
                     <div class="input-name">
-                        <label for="password">Password</label>
+                        <label for="password" class="redStar">Password</label>
+
                         <input type="password" name="password"
-                            placeholder="Must be 8 characters,one special characters,one number and alphabets" 
-                            class="inp-typ1" id="pass">
+                            placeholder="Must be 8 characters,one special characters,one number and alphabets"
+                            class="inp-typ1 redStar" id="pass" oninput="hideError(name)">
+                        <span class="password-toggle-icon" id="eye" onclick="showPassword()"><i class="fas fa-eye"
+                                ></i></span>
+
+
+                        <span id="pass-err" class="err-msg"></span>
+                    </div>
+
+                    <div class="input-name" id="phoneDiv">
+                        <label for="phno" class="redStar">Phone Number</label>
+
+                        <select id="countryCode" class="country-code">
+                            <option value="+1">+1 (US)</option>
+                            <option value="+91">+91 (India)</option>
+                            <option value="+44">+44 (UK)</option>
+                            <option value="+61">+61 (Australia)</option>
+                            <!-- Add more country codes as needed -->
+                        </select>
+
+                        <input type="number" name="phoneNumber" placeholder="eg:123456" class="inp-typ1" id="phno" oninput="hideError(name)">
+
+                        <span id="phno-err" class="err-msg"></span>
                     </div>
 
                     <div class="input-name">
-                        <label for="phno">Phone Number</label>
-                        <input type="number" name="empid" placeholder="eg:123456" class="inp-typ1" id="phno">
-                    </div>
+                        <label for="email" class="redStar">Email</label>
 
-                    <div class="input-name">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" placeholder="eg:example@email.com " class="inp-typ1" id="email">
+                        <input type="email" name="email" placeholder="eg:example@email.com " class="inp-typ1 redStar"
+                            id="email" oninput="hideError(name)" >
+
+                        <span id="email-err" class="err-msg"></span>
                     </div>
 
                     <div id="gendr">
-                        <label for="gender">Gender</label>
-                        <input type="radio" name="gender" value="Male" checked>Male
-                        <input type="radio" name="gender" value="Female">Female
-                        <input type="radio" name="gender" value="Others">Others
+                        <label for="gender" class="redStar">Gender</label>
+
+                        <input type="radio" name="gender" value="Male" oninput="hideError(name)">Male
+                        <input type="radio" name="gender" value="Female" oninput="hideError(name)">Female
+                        <input type="radio" name="gender" value="Others" oninput="hideError(name)">Others
+
+                        <span id="gender-err" class="err-msg"></span>
                     </div>
 
                     <div class="input-name">
@@ -56,12 +90,18 @@
 
                         <div class="input-address">
                             <label for="">Country/Region</label>
-                            <input type="text" placeholder="Country or Region" class="inp-addr" id="country">
+
+                            <input type="text" placeholder="Country or Region" class="inp-addr" id="country" >
+
+                            <span id="country-err" class="err-msg"></span>
                         </div>
 
                         <div class="input-address">
                             <label for="">State</label>
+
                             <input type="text" placeholder="State" class="inp-addr" id="state">
+
+                            <span id="state-err" class="err-msg"></span>
                         </div>
 
                         <div class="input-address">
@@ -75,15 +115,21 @@
                         </div>
 
                         <div class="input-address">
-                            <label for="">Pincode</label>
-                            <input type="text" placeholder="Pincode" class="inp-addr" id="pin">
+                            <label for="" class="redStar">Pincode</label>
+
+                            <input type="text" placeholder="Pincode" class="inp-addr " name="pin" id="pin" oninput="hideError(name)">
+
+                            <span id="pin-err" class="err-msg"></span>
                         </div>
 
                     </div>
 
                     <div id="check">
-                        <input type="checkbox" name="terms" id="terms">
+                        <input type="checkbox" name="terms" id="terms" oninput="hideError(name)">
+
                         <label for="terms">I accept the <a href="#">Terms & Condition</a></label>
+
+                        <p><span id="terms-err" class="err-msg"></span></p>
                     </div>
 
                     <div class="input-name">
@@ -98,61 +144,38 @@
         <div class="container2">
             <h2>Details</h2>
             <table id="table">
+
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>PhoneNo</th>
+                    <th>Email</th>
+                    <th>Gender</th>
+                    <th>Landmark</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Country</th>
+                    <th>Pincode</th>
+                    <th>Action</th>
+                </tr>
                 
-                    <tr>
-                        <th>FirstName</th>
-                        <th>LastName</th>
-                        <th>PhoneNo</th>
-                        <th>Email</th>
-                        <th>Gender</th>
-                        <th>Landmark</th>
-                        <th>City</th>
-                        <th>State</th>
-                        <th>Country</th>
-                        <th>Pincode</th>
-                        <th>Action</th>
-                    </tr>
-                <!-- <tr>
-                    <td>Madhusudan</td>
-                    <td>Pal</td>
-                    <td>254786</td>
-                    <td>ab@gmail.com</td>
-                    <td>Folder</td>
-                    <td>Baleswar</td>
-                    <td><button class="btn">Edit</button>
-                        <button class="btn">Delete</button></td>
-                </tr>
-                <tr>
-                    <td>Madhusudan</td>
-                    <td>Pal</td>
-                    <td>254786</td>
-                    <td>ab@gmail.com</td>
-                    <td>Folder</td>
-                </tr>
-                <tr>
-                    <td>Madhusudan</td>
-                    <td>Pal</td>
-                    <td>254786</td>
-                    <td>ab@gmail.com</td>
-                    <td>Folder</td>
-                </tr>
-                <tr>
-                    <td>Madhusudan</td>
-                    <td>Pal</td>
-                    <td>254786</td>
-                    <td>ab@gmail.com</td>
-                    <td>Folder</td>
-                    <td>Bhubaneswardfgsdfsdgfdsgsdfdfhhgdhdfzgfsgfdgdsgfdsgsfdgdsgsdgfdgdsgfdsgdsggdhdf</td>
-                   
-                    
-                    
-                </tr> -->
 
             </table>
 
         </div>
     </div>
 
+    <script>
+        function showPassword() {
+            let temp = document.getElementById("pass");
+
+            if (temp.type === "password") {
+                temp.type = "text";
+            } else {
+                temp.type = "password";
+            }
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 
