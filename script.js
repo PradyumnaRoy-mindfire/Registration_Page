@@ -1,4 +1,5 @@
 
+// Jquery
 var selectedRow = null;
 var formData = {};
 function autoSubmit(event) {
@@ -9,7 +10,6 @@ function autoSubmit(event) {
         readFormData();
 
     } else {
-        console.log(selectedRow)
         updateRecord()
     }
 
@@ -70,7 +70,7 @@ function validation(formData) {
     //firstname validation
     if(formData["fname"] === ""||/\d/.test(formData["fname"]) == true ) {
         fnameErr.textContent = "**Firstname is not valid...";
-        // document.getElementById("fname").setAttribute('class','errorEffect')
+        document.getElementById("fname").classList.add('errorEffect')
         isValid = false;
     }
     // if() {
@@ -79,17 +79,18 @@ function validation(formData) {
     // }
 
     // //password validation
-    if(formData['pass'] ==="" || formData['pass'].length  < 2 || formData['pass'].length  > 50 ||/[^a-zA-Z0-9\s]/.test(formData["pass"]) == false) {
+    if(formData['pass'] ==="" || formData['pass'].length  < 6 || formData['pass'].length  > 50 ||/[^a-zA-Z0-9\s]/.test(formData["pass"]) == false) {
         isValid = false;
         passErr.textContent = "**Password is not valid";
         document.querySelector('#eye').setAttribute('class','eyeAdd');
+        document.getElementById("pass").classList.add('errorEffect')    //for red border 
         // if(formData["pass"] ==="") {
         //     passErr.textContent = "**This field is required..";
         // }
         // if(formData['pass'].length  < 2)
         //     passErr.textContent = "**Password is too small "; //password word will contain atleast 6 characters 
         // if(formData['pass'].length  > 10)
-        //     passErr.textContent = "**Password is too large ";
+        //     passErr.textContent = "**Password is too large "; iife
         // if(/[^a-zA-Z0-9\s]/.test(formData["pass"]) == false)
            
 
@@ -105,12 +106,14 @@ function validation(formData) {
     if(formData['email'] ==="" || emailRegx.test(formData['email']) == false) {
         isValid = false;
         emailErr.textContent="**Email is not valid..."
+        document.getElementById("email").classList.add('errorEffect')
     }
 
     //Pincode validation
    
     if(formData['pin'] === ""||formData['pin'].length > 7 || formData['pin'].length <5  || /^\d+$/.test(formData['pin']) == false) {
         pinErr.textContent = "**Pincode is not valid.."
+        document.getElementById("pin").classList.add('errorEffect')
         isValid = false;
     }
     
@@ -129,12 +132,13 @@ function validation(formData) {
 
      } else {
         // console.log(document.querySelector("input[name='gender']:checked").value);
-         formData["gender"] = document.querySelector("input[name='gender']:checked").value;
+        formData["gender"] = document.querySelector("input[name='gender']:checked").value;
      }
 
      //Terms & Condition Validations
      
      if(formData["terms"] == false) {
+        // document.getElementById("terms").classList.add('errorEffect')
         termsErr.textContent = "**Accept the terms and conditions...";
         isValid = false;
      }
@@ -142,6 +146,7 @@ function validation(formData) {
      //phno
      if(formData['phno'].length != 10 ||  /^\d+$/.test(formData['phno']) == false) {
         phnoErr.textContent = "**Phone no is not valid.."
+        document.getElementById("phno").classList.add('errorEffect')
         isValid = false;
     }
 
@@ -171,18 +176,22 @@ function hideError(name) {
     console.log(name)
     if(name == 'fname') {
         let fnameErr = document.getElementById('fname-err');
+        document.getElementById("fname").classList.remove('errorEffect');
         fnameErr.textContent = "";
     }
     else if(name == 'password') {
         let passErr = document.getElementById('pass-err');
+        document.getElementById("pass").classList.remove('errorEffect');
         passErr.textContent = "";
     }
     else if(name == "phoneNumber") {
         let phnoErr = document.getElementById('phno-err');
+        document.getElementById("phno").classList.remove('errorEffect');
         phnoErr.textContent = "";
     }
     else if(name == 'email'){
         let emailErr = document.getElementById('email-err');
+        document.getElementById("email").classList.remove('errorEffect');
         emailErr.textContent = "";
     }
     else if(name == 'gender') {
@@ -191,10 +200,12 @@ function hideError(name) {
     }
     else if(name == 'pin') {
         let pinErr = document.getElementById('pin-err');
+        document.getElementById("pin").classList.remove('errorEffect');
         pinErr.textContent = "";
     }
     else if(name == 'terms') {
         let termsErr = document.getElementById('terms-err');
+        document.getElementById("terms").classList.remove('errorEffect');
         termsErr.textContent = "";
     }
     
@@ -207,21 +218,21 @@ function hideError(name) {
      let tableRef = table.getElementsByTagName('tbody')[0];   //tbody's 0th index is the 'th'
     //console.log(tableRef.rows.length)                           //shows the all rows present in the tbody
     let index = tableRef.rows.length                            // index is needed to insert row that is got from the no. of rows
-    var selectRow = table.insertRow(index++);  //  creating a new row,,, index is the position of the row to insert
+    var newRow = table.insertRow(index++);  //  creating a new row,,, index is the position of the row to insert
     
     
 
-    var cell1 = selectRow.insertCell(0);       //one cell is created
-    var cell2 = selectRow.insertCell(1);
-    var cell3 = selectRow.insertCell(2);
-    var cell4 = selectRow.insertCell(3);
-    var cell5 = selectRow.insertCell(4);
-    var cell6 = selectRow.insertCell(5);
-    var cell7 = selectRow.insertCell(6);
-    var cell8 = selectRow.insertCell(7);
-    var cell9 = selectRow.insertCell(8);
-    var cell10 = selectRow.insertCell(9);
-    var cell11 = selectRow.insertCell(10);
+    var cell1 = newRow.insertCell(0);       //one cell is created
+    var cell2 = newRow.insertCell(1);
+    var cell3 = newRow.insertCell(2);
+    var cell4 = newRow.insertCell(3);
+    var cell5 = newRow.insertCell(4);
+    var cell6 = newRow.insertCell(5);
+    var cell7 = newRow.insertCell(6);
+    var cell8 = newRow.insertCell(7);
+    var cell9 = newRow.insertCell(8);
+    var cell10 = newRow.insertCell(9);
+    var cell11 = newRow.insertCell(10);
 
     
 
@@ -249,7 +260,7 @@ function hideError(name) {
  }    
  
  function onEdit(td,formData) {
-    // console.log(formData)
+    document.getElementById('submit').value = "Update";
     selectedRow = td.parentElement.parentElement;
     document.getElementById("fname").value = selectedRow.cells[0].innerHTML;
     document.getElementById("lname").value = selectedRow.cells[1].innerHTML;
@@ -260,6 +271,7 @@ function hideError(name) {
     document.getElementById("state").value = selectedRow.cells[7].innerHTML;
     document.getElementById("country").value = selectedRow.cells[8].innerHTML;
     document.getElementById("pin").value = selectedRow.cells[9].innerHTML;
+    
     // updateRecord();
 }
 function updateRecord() {
@@ -278,7 +290,6 @@ function updateRecord() {
     newFormData["landmark"] = document.getElementById("landmark").value;
     newFormData["pin"] = document.getElementById("pin").value;
     newFormData["terms"] = document.getElementById("terms").value;
-    console.log(selectedRow);
     if(validation(newFormData) == true) {
         selectedRow.cells[0].innerHTML = document.getElementById("fname").value;
         selectedRow.cells[1].innerHTML = document.getElementById("lname").value;
@@ -291,11 +302,8 @@ function updateRecord() {
         selectedRow.cells[9].innerHTML = document.getElementById("pin").value;
         resetForm();
         selectedRow = null;
+        document.getElementById('submit').value = "Submit";
     }
-
-    
-    console.log("Not checking")
-    
     // selectedRow = null;
     // resetForm();
 }
