@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleCopy.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-     
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -18,26 +18,24 @@
     <div class="container">
 
         <div class="container1">
-            <h2>Registration Form</h2>
+            <h2>Registration Form copy</h2>
             <div class="form-container">
-                <!-- For Javascript autoSubmit() is required -->
-                <!-- <form action="" id="form" onsubmit="autoSubmit(event)"> -->  
-                <form action="" id="form">
+                <form action="" id="form" onsubmit="autoSubmit(event)">
+
                     <div class="input-name">
                         <label for="fname" class="redStar">First Name</label>
 
                         <input type="text" name="fname" placeholder="Enter Firstname" class="inp-typ1" id="fname" oninput="hideError(name)">
 
-                        <span class="recomandation">Should not contain any symbol or digit...</span>
-
                         <span id="fname-err" class="err-msg"></span>
 
+                        <span class="recomandation">Should not contain any symbol or digit...</span>
                     </div>
 
                     <div class="input-name">
                         <label for="lname">Last Name</label>
 
-                        <input type="text" name="lname" placeholder="Enter Lastname" class="inp-typ1" id="lname">
+                        <input type="text" name="lname" placeholder="Enter Lastname" class="inp-typ1" id="lname" oninput="hideError(name)">
 
                         <span id="lname-err" class="err-msg"></span>
 
@@ -46,18 +44,18 @@
 
                     <div class="input-name">
                         <label for="password" class="redStar">Password</label>
+                        <div id="eyeBox">
+                            <input type="password" name="password"
+                                placeholder="Password"
+                                class="inp-typ1 redStar" id="pass"  oninput="hideError(name)">
 
-                        
-                        <input type="password" name="password"
-                        placeholder="Password"
-                        class="inp-typ1 redStar" id="pass" oninput="hideError(name)">
-                        <span class="recomandation">Should contain atleast 6 character atmost 10 including a symbol,a digit,capital and small character...</span>
-                        <span class="password-toggle-icon" id="eye" ><i class="fas fa-eye"
-                                ></i></span>
-
+                            <span class="password-toggle-icon" id="eye" onclick="showPassword()"><i class="fas fa-eye"
+                                    ></i></span>    <!--For showing password -->
+                            </div>
 
                         <span id="pass-err" class="err-msg"></span>
 
+                        <span class="recomandation">Should contain atleast a symbol,a digit ,capital and small character...</span>
                     </div>
 
                     <div class="input-name" id="phoneDiv">
@@ -71,23 +69,18 @@
                             <!-- Add more country codes as needed -->
                         </select>
 
-                        <input type="number" name="phoneNumber" placeholder="eg:123456" class="inp-typ1" id="phno" oninput="hideError(name)">
+                        <input type="number" name="empid" placeholder="eg:123456" class="inp-typ1" id="phno" oninput="hideError(name)">
 
                         <span id="phno-err" class="err-msg"></span>
-
-                        <span class="recomandation">Should contain only digits...</span>
                     </div>
 
                     <div class="input-name">
                         <label for="email" class="redStar">Email</label>
 
                         <input type="email" name="email" placeholder="eg:example@email.com " class="inp-typ1 redStar"
-                            id="email" oninput="hideError(name)" >
+                            id="email"  oninput="hideError(name)" >
 
                         <span id="email-err" class="err-msg"></span>
-
-                        <span class="recomandation">Should be in email format...</span>
-
                     </div>
 
                     <div id="gendr">
@@ -106,7 +99,7 @@
                         <div class="input-address">
                             <label for="">Country/Region</label>
 
-                            <input type="text" placeholder="Country or Region" class="inp-addr" id="country" >
+                            <input type="text" placeholder="Country or Region" class="inp-addr" id="country"  >
 
                             <span id="country-err" class="err-msg"></span>
                         </div>
@@ -132,11 +125,9 @@
                         <div class="input-address">
                             <label for="" class="redStar">Pincode</label>
 
-                            <input type="text" placeholder="Pincode" class="inp-addr " name="pin" id="pin" oninput="hideError(name)">
+                            <input type="text" placeholder="Pincode" class="inp-addr " id="pin" oninput="hideError(name)">
 
                             <span id="pin-err" class="err-msg"></span>
-
-                            <span class="recomandation">Should contain only 5 or 6 digit...</span>
                         </div>
 
                     </div>
@@ -175,22 +166,21 @@
                     <th>Pincode</th>
                     <th>Action</th>
                 </tr>
-            </thead>
+              </thead>
+              <tbody>
+                
+              </tbody>
 
-            <tbody>
-
-            </tbody>
             </table>
 
         </div>
     </div>
 
-       <!-- jquery CDN -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        
        
-    <script src="./js/script.js"></script>
-    <script src="./js/formModule.js"></script>
-    <script src="./js/tableModule.js"></script>
+    </script>
+    <script src="scriptCopy.js"></script>
 </body>
 
 </html>

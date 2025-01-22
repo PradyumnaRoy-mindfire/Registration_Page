@@ -7,7 +7,7 @@ body {
     /* font-size: 20px; */
     font-size: calc(8px + 1vw);
     color: whitesmoke;
-    background-color: white; 
+    background-color: aliceblue; 
 }
 .container {
     display: flex;
@@ -31,7 +31,7 @@ form{
     border-top: 3px solid rgb(116, 100, 100);    
     border-bottom: 3px solid rgb(70, 59, 59); /*border : width   style(dotted,solid,dashed etc)  color */
     background-color: rgb(0, 0, 0);
-    box-shadow: 10px 10px 10px  darkgray;
+    box-shadow: 0px 0px 5px 8px darkgray;
 }
 .container2 {
     width: 70%;
@@ -41,7 +41,7 @@ form{
     border-top: 3px solid rgb(116, 100, 100);    
     border-bottom: 3px solid rgb(70, 59, 59); /*border : width   style(dotted,solid,dashed etc)  color */
     background-color: rgb(0, 0, 0);
-    box-shadow: 0px 0px 15px 10px  darkgray inset;
+    box-shadow: 0px 0px 5px 8px darkgray;
     overflow-x: auto;
 }
 
@@ -55,6 +55,7 @@ h2 {
     background: linear-gradient(to right ,red,blue);
     background-clip: text;
     color: transparent;
+    /* text-underline-offset: 1px solid white; */
 }
 .input-name{
     padding: 7px;
@@ -85,8 +86,11 @@ input::placeholder {
 input[type='radio']{
     /* appearance: none; */
     width: 8%;
+    
 }
-
+input[type='number']{
+    appearance: none;   
+}
 .inp-addr {
     margin: 5px ;
 }
@@ -116,8 +120,13 @@ input[type='radio']{
     font-size: calc(5px + 1vw);
     line-height: 1;
     color: #333;
+    /* transition: color 0.3s ease-in-out; */
     /* margin-bottom: 20px; */
 }
+.eyeBox>input{
+    width: 80%;
+}
+
 .eyeAdd {
     color: #333;
     margin-right: 12px;
@@ -126,7 +135,9 @@ input[type='radio']{
     right: 10px;
     transform: translateY(-50%);
     cursor: pointer; 
-} 
+}
+
+  
 .password-toggle-icon i:hover {
     color: #b98888;
 }
@@ -146,18 +157,16 @@ label{
     /* font-size: 20px; */
     font-size: calc(2px + 1.5vw);
     height: 35px;
-    border-radius: 8px;
+    border-radius: 7px;
     color: white;
     font-weight: bolder;
-    background: linear-gradient(45deg,#4f1919,#ff3333);
-    margin-bottom: 15px;
-    /* border: 1px solid rgb(10, 145, 111); */
+    background-color: aqua;
+    border: 1px solid rgb(10, 145, 111);
     box-shadow: 0px 0px 4px 4px rgb(128, 119, 119);
 }
 #submit:hover {
-    background: linear-gradient(45deg,#ff3333,#4f1919);
-    box-shadow: 0px 0px 6px 6px rgb(128, 119, 119);
-    transform: scale(1.1);
+    background-color: white;
+    color: aqua;
 }
 .input-address, .input-name {
     display: flex;
@@ -169,13 +178,6 @@ label{
     padding: 7px;
 }
 
-input {
-    border: none;
-}
-
-input:hover {
-    box-shadow: 0px 0px 20px 3px whitesmoke;
-}
 
 table,th,td {
     padding: 5px;
@@ -200,11 +202,14 @@ table:hover {
         background-color: #b0b8b8;
     }
     tr:nth-child(even) {
-        /* background-color: rgb(97, 87, 87); */
-        background-color: black;
+        background-color: white;
     }
 }
 
+/* #gendr label,input{
+    padding: 5px;
+    
+} */
 
 /* Media Queries to have an alternate CSS section right inside your style sheet. */
 @media screen and (max-width: 935px) {
@@ -218,8 +223,6 @@ table:hover {
         margin-right: 25px;
     }
 }
-
-
 .btnEdit {
     background-color: rgb(44, 212, 44);
     border-radius: 10px;
@@ -234,59 +237,33 @@ table:hover {
     transform: scale(1.1);
 }
 .btnDelete {
-    background-color: rgb(243, 65, 42);
+    background-color: rgb(241, 75, 53);
     border-radius:10px ;
     color: #464949;
     font-size: calc(1px + 1vw);
     margin: 2px;
     width: 80%;
-    border: 2px solid rgb(221, 0, 0)
+    border: 2px solid rgb(255, 0, 0)
 }
 .btnDelete:hover {
-    background-color: rgb(240, 140, 34);
+    background-color: rgb(226, 48, 17);
     transform: scale(1.1);
 }
-
 .errorEffect {
-    border: 2px solid red;
-    box-shadow: 0px 0px 20px 3px red;
+    border: 3px solid rgba(247, 8, 8, 0.925);
+    /* width: 100%;
+    box-shadow: 0px 0px 20px 3px red; */
 }
 .recomandation {
+    color: white;
     display: none;
+    opacity: 0;
 }
 input[name='fname']:focus~.recomandation   {
-    font-size: calc(1px + 0.9vw);
+    font-size: calc(1px + 1vw);
     font-family: sans-serif;
     display:inline;
+    opacity: 1;
 }
-input[name='lname']:focus~.recomandation   {
-    font-size: calc(1px + 0.9vw);
-    font-family: sans-serif;
-    display:inline;
-}
-input[name='password']:focus~.recomandation   {
-    font-size: calc(1px + 0.9vw);
-    font-family: sans-serif;
-    display:inline;
-}
-input[name='password']:focus~.eyeAdd{
-    top: 39%;
-}
-input[name='phoneNumber']:focus~.recomandation   {
-    font-size: calc(1px + 0.9vw);
-    font-family: sans-serif;
-    display:inline;
-}
-input[name='email']:focus~.recomandation   {
-    font-size: calc(1px + 0.9vw);
-    font-family: sans-serif;
-    display:inline;
-}
-input[name='pin']:focus~.recomandation   {
-    font-size: calc(1px + 0.9vw);
-    font-family: sans-serif;
-    display:inline;
-}
-
 
 

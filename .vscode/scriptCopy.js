@@ -1,7 +1,8 @@
 
-// Jquery
+
 var selectedRow = null;
 var formData = {};
+
 function autoSubmit(event) {
     event.preventDefault();    /* to stop the auto submit */
 
@@ -10,6 +11,7 @@ function autoSubmit(event) {
         readFormData();
 
     } else {
+        console.log(selectedRow)
         updateRecord()
     }
 
@@ -68,52 +70,52 @@ function validation(formData) {
 
     let isValid = true;
     //firstname validation
-    if(formData["fname"] === ""||/\d/.test(formData["fname"]) == true ) {
-        fnameErr.textContent = "**Firstname is not valid...";
-        document.getElementById("fname").classList.add('errorEffect')
+    
+    if(formData["fname"] === "" || /\d/.test(formData["fname"]) == true) {
+
+        fnameErr.textContent = "**Enter name properly...";
+        document.getElementById("fname").classList.add('errorEffect');
         isValid = false;
     }
-    // if() {
-    //     fnameErr.textContent = "**Enter name properly...";
-    //     isValid = false;
-    // }
 
     // //password validation
-    if(formData['pass'] ==="" || formData['pass'].length  < 6 || formData['pass'].length  > 50 ||/[^a-zA-Z0-9\s]/.test(formData["pass"]) == false) {
+    if(formData['pass'] ==="" || formData['pass'].length  < 2 || formData['pass'].length  > 50 ||/[^a-zA-Z0-9\s]/.test(formData["pass"]) == false) {
         isValid = false;
-        passErr.textContent = "**Password is not valid";
-        document.querySelector('#eye').setAttribute('class','eyeAdd');
-        document.getElementById("pass").classList.add('errorEffect')    //for red border 
-        // if(formData["pass"] ==="") {
-        //     passErr.textContent = "**This field is required..";
-        // }
-        // if(formData['pass'].length  < 2)
-        //     passErr.textContent = "**Password is too small "; //password word will contain atleast 6 characters 
-        // if(formData['pass'].length  > 10)
-        //     passErr.textContent = "**Password is too large "; iife
-        // if(/[^a-zA-Z0-9\s]/.test(formData["pass"]) == false)
-           
+        if(formData["pass"] ==="") {
+            passErr.textContent = "**This field is required..";
+        }
+        if(formData['pass'].length  < 2)
+            passErr.textContent = "**Password is too small "; //password word will contain atleast 6 characters 
+        if(formData['pass'].length  > 10)
+            passErr.textContent = "**Password is too large ";
+        if(/[^a-zA-Z0-9\s]/.test(formData["pass"]) == false)
+            passErr.textContent = "**Password is invalid";
+            document.querySelector('#eye').setAttribute('class','eyeAdd');
 
     }
-    // if(formData['pass'] ==="" ) {
-    //     passErr.textContent="**This field is required...";
-    //     isValid = false;
-    // }
+    if(formData['pass'] ==="" ) {
+        passErr.textContent="**This field is required...";
+        isValid = false;
+    }
 
     // //email validation
-    
+    if(formData['email'] ==="" ) {
+        emailErr.textContent="**This field is required...";
+        isValid = false;
+    }
     let emailRegx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]/
-    if(formData['email'] ==="" || emailRegx.test(formData['email']) == false) {
+    if( emailRegx.test(formData['email']) == false) {
         isValid = false;
         emailErr.textContent="**Email is not valid..."
-        document.getElementById("email").classList.add('errorEffect')
     }
 
     //Pincode validation
-   
-    if(formData['pin'] === ""||formData['pin'].length > 7 || formData['pin'].length <5  || /^\d+$/.test(formData['pin']) == false) {
+    if(formData['pin'] === "") {
+        pinErr.textContent = "**This field is required...";
+        isValid = false;
+    }
+    if(formData['pin'].length > 7 || formData['pin'].length <5  || /^\d+$/.test(formData['pin']) == false) {
         pinErr.textContent = "**Pincode is not valid.."
-        document.getElementById("pin").classList.add('errorEffect')
         isValid = false;
     }
     
@@ -131,14 +133,13 @@ function validation(formData) {
         isValid = false;
 
      } else {
-        // console.log(document.querySelector("input[name='gender']:checked").value);
-        formData["gender"] = document.querySelector("input[name='gender']:checked").value;
+        console.log(document.querySelector("input[name='gender']:checked").value);
+         formData["gender"] = document.querySelector("input[name='gender']:checked").value;
      }
 
      //Terms & Condition Validations
      
      if(formData["terms"] == false) {
-        // document.getElementById("terms").classList.add('errorEffect')
         termsErr.textContent = "**Accept the terms and conditions...";
         isValid = false;
      }
@@ -146,7 +147,6 @@ function validation(formData) {
      //phno
      if(formData['phno'].length != 10 ||  /^\d+$/.test(formData['phno']) == false) {
         phnoErr.textContent = "**Phone no is not valid.."
-        document.getElementById("phno").classList.add('errorEffect')
         isValid = false;
     }
 
@@ -162,7 +162,11 @@ function validation(formData) {
     return isValid
      
 }
-
+function hideError(name) {
+    console.log(name)
+    let fnameErr = document.getElementById('fname-err');
+    fnameErr.textContent = "";
+}
 function ValidAndcontrolShow(formData) {
     isValid = validation(formData)
     if(isValid == true && selectedRow == null) {
@@ -172,46 +176,6 @@ function ValidAndcontrolShow(formData) {
      }
 }
 
-function hideError(name) {
-    console.log(name)
-    if(name == 'fname') {
-        let fnameErr = document.getElementById('fname-err');
-        document.getElementById("fname").classList.remove('errorEffect');
-        fnameErr.textContent = "";
-    }
-    else if(name == 'password') {
-        let passErr = document.getElementById('pass-err');
-        document.getElementById("pass").classList.remove('errorEffect');
-        passErr.textContent = "";
-    }
-    else if(name == "phoneNumber") {
-        let phnoErr = document.getElementById('phno-err');
-        document.getElementById("phno").classList.remove('errorEffect');
-        phnoErr.textContent = "";
-    }
-    else if(name == 'email'){
-        let emailErr = document.getElementById('email-err');
-        document.getElementById("email").classList.remove('errorEffect');
-        emailErr.textContent = "";
-    }
-    else if(name == 'gender') {
-        let genderErr = document.getElementById('gender-err');
-        genderErr.textContent = "";
-    }
-    else if(name == 'pin') {
-        let pinErr = document.getElementById('pin-err');
-        document.getElementById("pin").classList.remove('errorEffect');
-        pinErr.textContent = "";
-    }
-    else if(name == 'terms') {
-        let termsErr = document.getElementById('terms-err');
-        document.getElementById("terms").classList.remove('errorEffect');
-        termsErr.textContent = "";
-    }
-    
-    
-   
-}
 
  function showData(formData) {
      let table = document.getElementById('table');
@@ -248,19 +212,20 @@ function hideError(name) {
     cell10.innerHTML = formData["pin"];
 
     cell11.innerHTML = '<td><button class="btnEdit"  onclick="onEdit(this,formData)">Edit</button> <button class="btnDelete" onclick="deleteCurRow(this)" id="btn2" >Delete</button></td> ';
-    //'this' will send the whole content of the row
+                            //'this' will send the whole content of the row
 
     let btnEdit = document.querySelector('.btnEdit');
     let btnDelete = document.querySelector('.btnDelete');
     btnEdit.setAttribute('class','btnEdit');
     btnDelete.setAttribute('class','btnDelete');
+   // console.log(this)
 
     resetForm();
     
  }    
  
  function onEdit(td,formData) {
-    document.getElementById('submit').value = "Update";
+    // console.log(formData)
     selectedRow = td.parentElement.parentElement;
     document.getElementById("fname").value = selectedRow.cells[0].innerHTML;
     document.getElementById("lname").value = selectedRow.cells[1].innerHTML;
@@ -271,7 +236,6 @@ function hideError(name) {
     document.getElementById("state").value = selectedRow.cells[7].innerHTML;
     document.getElementById("country").value = selectedRow.cells[8].innerHTML;
     document.getElementById("pin").value = selectedRow.cells[9].innerHTML;
-    
     // updateRecord();
 }
 function updateRecord() {
@@ -290,6 +254,7 @@ function updateRecord() {
     newFormData["landmark"] = document.getElementById("landmark").value;
     newFormData["pin"] = document.getElementById("pin").value;
     newFormData["terms"] = document.getElementById("terms").value;
+    console.log(selectedRow);
     if(validation(newFormData) == true) {
         selectedRow.cells[0].innerHTML = document.getElementById("fname").value;
         selectedRow.cells[1].innerHTML = document.getElementById("lname").value;
@@ -302,8 +267,11 @@ function updateRecord() {
         selectedRow.cells[9].innerHTML = document.getElementById("pin").value;
         resetForm();
         selectedRow = null;
-        document.getElementById('submit').value = "Submit";
     }
+
+    
+    console.log("Not checking")
+    
     // selectedRow = null;
     // resetForm();
 }
@@ -320,17 +288,8 @@ function resetForm() {
     document.getElementById("state").value = "";
     document.getElementById("country").value = "";
     document.getElementById("pin").value = "";
-    //For the terms and condition part
+    // console.log(document.querySelector('input[type="checkbox"]').checked)
     document.querySelector('input[type="checkbox"]').checked = false;
-
-    //
-    let radioButtons = document.getElementsByName('gender');
-    for(let radio of radioButtons) {
-        if(radio.checked) {
-            radio.checked = false;
-            break;
-        }
-    }
     // selectedRow = null;
 }
 
