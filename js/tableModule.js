@@ -21,17 +21,12 @@ var tableModule = (function($)
             newRow.append($(`<td>${formData.pin}</td>`))
             newRow.append($(`<button class="btnEdit">Edit</button><button class="btnDelete" id="btn2">Delete</button>`))
             tableBody.append(newRow);
-            attachEventHandlers(newRow,formData);
+            attachEventHandlers();
             formModule.resetForm();
-       
         
-        
-        
-        // // console.log(this.parentElement.parentElement);
-        // attachEventHandlers(formData.index);
     }
 
-     function attachEventHandlers(newRow,formData) {
+     function attachEventHandlers() {
         $('.btnEdit').on('click', function() { 
             // Change the button -> "Update"
             $('#submit').val("Update");
@@ -48,6 +43,7 @@ var tableModule = (function($)
         $(document).on('click', '.btnEdit', function() {
             // target the row that contains the clicked button
             selectedRow = $(this).closest('tr');
+            console.log(selectedRow);
             $(document).trigger('selectedRowUpdated', [selectedRow]); 
 
             // Populate the form with the current values of the selected row
@@ -55,10 +51,12 @@ var tableModule = (function($)
             $('#lname').val(selectedRow.find('td').eq(1).text());
             $('#phno').val(selectedRow.find('td').eq(2).text());
             $('#email').val(selectedRow.find('td').eq(3).text());
-            $('#pass').val(selectedRow.find('td').eq(4).text());
-            $('#email').val(selectedRow.find('td').eq(5).text());
-            $('#email').val(selectedRow.find('td').eq(6).text());
-            $('#email').val(selectedRow.find('td').eq(7).text());
+            // $('#gender').val(selectedRow.find('td').eq(4).text());
+            $('#landmark').val(selectedRow.find('td').eq(5).text());
+            $('#city').val(selectedRow.find('td').eq(6).text());
+            $('#state').val(selectedRow.find('td').eq(7).text());
+            $('#country').val(selectedRow.find('td').eq(8).text());
+            $('#pin').val(selectedRow.find('td').eq(9).text());
     
             
         });
@@ -118,12 +116,26 @@ var tableModule = (function($)
             pin:$('#pin').val(),
             terms:$('#terms')[0].checked
         }
+        
+        // go for validations 
 
+             //update the validated data
         selectedRow.find('td').eq(0).text(newFormData.fname);
+        selectedRow.find('td').eq(1).text(newFormData.lname);
+        selectedRow.find('td').eq(2).text(newFormData.phno);
+        selectedRow.find('td').eq(3).text(newFormData.email);
+        selectedRow.find('td').eq(4).text(newFormData.fname);      //for gender
+        selectedRow.find('td').eq(5).text(newFormData.landmark);
+        selectedRow.find('td').eq(6).text(newFormData.city);
+        selectedRow.find('td').eq(7).text(newFormData.state);
+        selectedRow.find('td').eq(8).text(newFormData.country);
+        selectedRow.find('td').eq(9).text(newFormData.pin);
+
+
+        // selectedRow.find('td').eq(4).text(newFormData.fname);    //for gender
        
         // newRow.html(newFormData.fname)
 
-        // go for validations 
         // newRow.append($(`<td>${newFormData.fname}</td>`))
         // newRow.find('td:eq(0)').text(newFormData.fname);
         
