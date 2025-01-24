@@ -33,21 +33,39 @@ var tableModule = (function($)
 
      function attachEventHandlers(newRow,formData) {
         $('.btnEdit').on('click', function() { 
+            // Change the button -> "Update"
             $('#submit').val("Update");
-            onEdit(newRow,formData);
-            //localStorage.setItem("formData",JSON.stringify(formData))
-            // Add edit functionality here
+            onEdit();
         });
 
         $('.btnDelete').on('click', function() {
-            console.log(formModule.formData.idx);
-            deleteCurRow(formModule.formData.idx);
+            deleteCurRow();
         });
     }
 
     
-    function onEdit(newRow,formData) {
-        console.log(newRow);
+    function onEdit() {
+        $(document).on('click', '.btnEdit', function() {
+            // target the row that contains the clicked button
+            selectedRow = $(this).closest('tr');
+            $(document).trigger('selectedRowUpdated', [selectedRow]); 
+
+            // Populate the form with the current values of the selected row
+            $('#fname').val(selectedRow.find('td').eq(0).text());
+            $('#lname').val(selectedRow.find('td').eq(1).text());
+            $('#phno').val(selectedRow.find('td').eq(2).text());
+            $('#email').val(selectedRow.find('td').eq(3).text());
+            $('#pass').val(selectedRow.find('td').eq(4).text());
+            $('#email').val(selectedRow.find('td').eq(5).text());
+            $('#email').val(selectedRow.find('td').eq(6).text());
+            $('#email').val(selectedRow.find('td').eq(7).text());
+    
+            
+        });
+
+
+
+        // console.log(newRow);
         // console.log(localStorage.getItem(idx));
         // Get the 3rd row (index 2) of a table
         //newRow.find('td').eq(0).text()
@@ -55,38 +73,38 @@ var tableModule = (function($)
         // console.log("Formdata on edit",formData);
 
         // $('#fname').val(newRow.find('td').eq(0).text());
-        $('#fname').val(newRow.find('td').eq(0).text());
-        $('#lname').val(newRow.find('td').eq(1).text());
-        $('#phno').val(formData.phno);
-        $('#email').val(formData.email);
-        $('#pass').val(formData.pass);
-        $('#landmark').val(formData.landmark);
-        $('#city').val(formData.city);
-        $('#state').val(formData.state);
-        $('#country').val(formData.country);
-        $('#pin').val(formData.pin);
-        console.log("thisrow",this);
+        // $('#fname').val(newRow.find('td').eq(0).text());
+        // $('#lname').val(newRow.find('td').eq(1).text());
+        // $('#phno').val(formData.phno);
+        // $('#email').val(formData.email);
+        // $('#pass').val(formData.pass);
+        // $('#landmark').val(formData.landmark);
+        // $('#city').val(formData.city);
+        // $('#state').val(formData.state);
+        // $('#country').val(formData.country);
+        // $('#pin').val(formData.pin);
+        // console.log("thisrow",this);
                                 // selectedRow is updated asynchronously,that's why we cant acess immediately
         
        ;
         // console.log("selected row",selectedRow);
-        $(document).on('click', '.btnEdit', function() {
-            formData.fname = $(this).closest('tr').find('td').eq(0).html() ;
-            // localStorage.setItem("formData",formData);
-        //    dj(selectedRow)
+        // $(document).on('click', '.btnEdit', function() {
+        //     formData.fname = $(this).closest('tr').find('td').eq(0).html() ;
+        //     // localStorage.setItem("formData",formData);
+        // //    dj(selectedRow)
              
-        });
-        selectedRow = newRow
-        $(document).trigger('selectedRowUpdated', [selectedRow]); 
+        // });
+        // selectedRow = newRow
+        
         
         // updateRecord(selectedRow,idx)
     }
    
-    function updateRecord(newRow) {
+    function updateRecord(selectedRow) {
         // let row = JSON.parse(localStorage.getItem(idx));
         //data after editing
         newFormData = {
-            index:newRow.index,
+            // index:newRow.index,
             fname:$('#fname').val(),
             lname:$('#lname').val(),
             pass:$('#pass').val(),
@@ -101,6 +119,7 @@ var tableModule = (function($)
             terms:$('#terms')[0].checked
         }
 
+        selectedRow.find('td').eq(0).text(newFormData.fname);
        
         // newRow.html(newFormData.fname)
 
@@ -135,13 +154,13 @@ var tableModule = (function($)
         // rows.find('td:eq(5)').text(newFormData.email);
         // rows.find('td:eq(6)').text(newFormData.landmark);
      
-        newRow.find('td:eq(0)').text(newFormData.fname);
-        newRow.find('td:eq(1)').text(newFormData.lname);
-        newRow.find('td:eq(2)').text(newFormData.pass);
-        newRow.find('td:eq(3)').text(newFormData.phno);
-        newRow.find('td:eq(4)').text(newFormData.email);
-        newRow.find('td:eq(5)').text(newFormData.fname);
-        newRow.find('td:eq(6)').text(newFormData.fname);
+        // newRow.find('td:eq(0)').text(newFormData.fname);
+        // newRow.find('td:eq(1)').text(newFormData.lname);
+        // newRow.find('td:eq(2)').text(newFormData.pass);
+        // newRow.find('td:eq(3)').text(newFormData.phno);
+        // newRow.find('td:eq(4)').text(newFormData.email);
+        // newRow.find('td:eq(5)').text(newFormData.fname);
+        // newRow.find('td:eq(6)').text(newFormData.fname);
         
 
 
@@ -156,8 +175,6 @@ var tableModule = (function($)
         $(document).on('click', '.btnDelete', function() {
             $(this).closest('tr').remove();  // Remove the  row (tr) that clicked the button .btnDelete
         });
-        // console.log(idx);
-        // $('#table').remove(idx);
     }
    
     function init() {
