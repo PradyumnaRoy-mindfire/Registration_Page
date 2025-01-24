@@ -2,13 +2,13 @@ var tableModule = (function($)
  {     
     var selectedRow = null;
     function showData() {
-        //  localStorage.clear();
+         
         // let formData = {};
         let storageLength = localStorage.length;
         let tableBody = $('#table tbody');
-        for(let i = 0;i < storageLength;i++) {
-            formData = JSON.parse(localStorage.getItem(i));
-            var newRow = $("<tr>''</tr>")
+            // formData = JSON.parse(localStorage.getItem("formData"));
+            var formData = formModule.formData;
+            var newRow = $("<tr>''</tr>");
             newRow.append($(`<td>${formData.fname}</td>`))
             newRow.append($(`<td>${formData.lname}</td>`))
             newRow.append($(`<td>${formData.phno}</td>`))
@@ -21,33 +21,21 @@ var tableModule = (function($)
             newRow.append($(`<td>${formData.pin}</td>`))
             newRow.append($(`<button class="btnEdit">Edit</button><button class="btnDelete" id="btn2">Delete</button>`))
             tableBody.append(newRow);
-            attachEventHandlers(formData.index);
-        }
-        // console.log(this.parentElement.parentElement);
-        // var newRow = $("<tr>''</tr>")
-        // newRow.append($(`<td>${formData.fname}</td>`))
-        // newRow.append($(`<td>${formData.lname}</td>`))
-        // newRow.append($(`<td>${formData.phno}</td>`))
-        // newRow.append($(`<td>${formData.email}</td>`))
-        // newRow.append($(`<td>${formData.gender}</td>`))
-        // newRow.append($(`<td>${formData.landmark}</td>`))
-        // newRow.append($(`<td>${formData.city}</td>`))
-        // newRow.append($(`<td>${formData.state}</td>`))
-        // newRow.append($(`<td>${formData.country}</td>`))
-        // newRow.append($(`<td>${formData.pin}</td>`))
-        // newRow.append($(`<button class="btnEdit">Edit</button><button class="btnDelete" id="btn2">Delete</button>`))
+            attachEventHandlers(newRow,formData);
+            formModule.resetForm();
+       
         
         
         
-        // tableBody.append(newRow);
         // // console.log(this.parentElement.parentElement);
         // attachEventHandlers(formData.index);
     }
 
-     function attachEventHandlers(idx) {
+     function attachEventHandlers(newRow,formData) {
         $('.btnEdit').on('click', function() { 
             $('#submit').val("Update");
-            onEdit(idx);
+            onEdit(newRow,formData);
+            //localStorage.setItem("formData",JSON.stringify(formData))
             // Add edit functionality here
         });
 
@@ -58,16 +46,17 @@ var tableModule = (function($)
     }
 
     
-    function onEdit(idx) {
-        console.log(idx);
+    function onEdit(newRow,formData) {
+        console.log(newRow);
         // console.log(localStorage.getItem(idx));
         // Get the 3rd row (index 2) of a table
-
-        let formData = JSON.parse(localStorage.getItem(idx));
+        //newRow.find('td').eq(0).text()
+        //let formData = JSON.parse(localStorage.getItem("formData"));
         // console.log("Formdata on edit",formData);
 
-        $('#fname').val(formData.fname);
-        $('#lname').val(formData.lname);
+        // $('#fname').val(newRow.find('td').eq(0).text());
+        $('#fname').val(newRow.find('td').eq(0).text());
+        $('#lname').val(newRow.find('td').eq(1).text());
         $('#phno').val(formData.phno);
         $('#email').val(formData.email);
         $('#pass').val(formData.pass);
@@ -77,20 +66,27 @@ var tableModule = (function($)
         $('#country').val(formData.country);
         $('#pin').val(formData.pin);
         console.log("thisrow",this);
-        selectedRow = formData                         // selectedRow is updated asynchronously,that's why we cant acess immediately
+                                // selectedRow is updated asynchronously,that's why we cant acess immediately
         
        ;
         // console.log("selected row",selectedRow);
-
+        $(document).on('click', '.btnEdit', function() {
+            formData.fname = $(this).closest('tr').find('td').eq(0).html() ;
+            // localStorage.setItem("formData",formData);
+        //    dj(selectedRow)
+             
+        });
+        selectedRow = newRow
+        $(document).trigger('selectedRowUpdated', [selectedRow]); 
+        
         // updateRecord(selectedRow,idx)
-        $(document).trigger('selectedRowUpdated', selectedRow);   
     }
    
-    function updateRecord(row) {
+    function updateRecord(newRow) {
         // let row = JSON.parse(localStorage.getItem(idx));
         //data after editing
         newFormData = {
-            index:row.index,
+            index:newRow.index,
             fname:$('#fname').val(),
             lname:$('#lname').val(),
             pass:$('#pass').val(),
@@ -105,34 +101,50 @@ var tableModule = (function($)
             terms:$('#terms')[0].checked
         }
 
+       
+        // newRow.html(newFormData.fname)
+
         // go for validations 
+        // newRow.append($(`<td>${newFormData.fname}</td>`))
+        // newRow.find('td:eq(0)').text(newFormData.fname);
+        
+
+
 
             //new data is udated to the  row
-        row.fname = newFormData.fname,
-        row.lname = newFormData.lname;
-        row.pass = newFormData.pass;
-        row.gender = newFormData.gender;
-        row.phno = newFormData.phno;
-        row.email = newFormData.email;
-        row.landmark = newFormData.landmark;
-        row.state = newFormData.state;
-        row.country = newFormData.country;
-        row.pin = newFormData.pin;
-        row.terms = $('#terms')[0].checked;
+        // row.fname = newFormData.fname,
+        // row.lname = newFormData.lname;
+        // row.pass = newFormData.pass;
+        // row.gender = newFormData.gender;
+        // row.phno = newFormData.phno;
+        // row.email = newFormData.email;
+        // row.landmark = newFormData.landmark;
+        // row.state = newFormData.state;
+        // row.country = newFormData.country;
+        // row.pin = newFormData.pin;
+        // row.terms = $('#terms')[0].checked;
 
-        // console.log(newFormData.index);
+        // // console.log(newFormData.index);
 
-        const rows = $(`#table tbody tr:eq(${newFormData.index})`);
-        rows.find('td:eq(0)').text(newFormData.fname);
-        rows.find('td:eq(1)').text(newFormData.lname);
-        rows.find('td:eq(2)').text(newFormData.pass);
-        rows.find('td:eq(3)').text(newFormData.gender);
-        rows.find('td:eq(4)').text(newFormData.phno);
-        rows.find('td:eq(5)').text(newFormData.email);
-        rows.find('td:eq(6)').text(newFormData.landmark);
+        // const rows = $(`#table tbody tr:eq(${newFormData.index})`);
+        // rows.find('td:eq(0)').text(newFormData.fname);
+        // rows.find('td:eq(1)').text(newFormData.lname);
+        // rows.find('td:eq(2)').text(newFormData.pass);
+        // rows.find('td:eq(3)').text(newFormData.gender);
+        // rows.find('td:eq(4)').text(newFormData.phno);
+        // rows.find('td:eq(5)').text(newFormData.email);
+        // rows.find('td:eq(6)').text(newFormData.landmark);
      
+        newRow.find('td:eq(0)').text(newFormData.fname);
+        newRow.find('td:eq(1)').text(newFormData.lname);
+        newRow.find('td:eq(2)').text(newFormData.pass);
+        newRow.find('td:eq(3)').text(newFormData.phno);
+        newRow.find('td:eq(4)').text(newFormData.email);
+        newRow.find('td:eq(5)').text(newFormData.fname);
+        newRow.find('td:eq(6)').text(newFormData.fname);
         
-        
+
+
         // localStorage.setItem(row.index,JSON.stringify(row))
         // console.log("Row after update",localStorage);
         formModule.resetForm();
@@ -140,13 +152,19 @@ var tableModule = (function($)
         $(document).trigger('selectedRowUpdated', selectedRow); 
         
     }
-    function deleteCurRow(idx) {
-        console.log(idx);
-        $('#table').deleteRow(idx);
+    function deleteCurRow() {
+        $(document).on('click', '.btnDelete', function() {
+            $(this).closest('tr').remove();  // Remove the  row (tr) that clicked the button .btnDelete
+        });
+        // console.log(idx);
+        // $('#table').remove(idx);
     }
    
     function init() {
-        showData(formModule.formData);
+        // localStorage.clear();   
+        if(selectedRow != null){
+            showData();
+        }
     }
 
     // Return public methods

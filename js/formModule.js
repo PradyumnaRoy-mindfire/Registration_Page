@@ -20,6 +20,7 @@ var formModule = (function($){
            
         });
         function readFormData() {
+            console.log(formData);
             formData.fname = $('#fname').val();
             // formData["fname"] = $('#fname').val();
             formData["lname"] = $('#lname').val();
@@ -34,7 +35,7 @@ var formModule = (function($){
             formData["terms"] = $('#terms')[0].checked;
             formData.index = i++;  
             dataArray.push(formData);
-            localStorage.setItem(formData.index,JSON.stringify(formData));
+            localStorage.setItem("formData",JSON.stringify(formData));
             
             resetForm();
             // console.log(formData.index);
