@@ -2,8 +2,12 @@
     $(document).ready(function() {
         formModule.init();
         tableModule.init();
+        pageModule.init();
     });
 })(jQuery)
+
+
+
 
 
 
@@ -17,15 +21,7 @@
 //     }
 // })(jQuery);
 
-
-
-
-
-
 //     //For showing hidden password
-
-
-
 
 
 // $(document).ready(function() {
@@ -182,9 +178,6 @@
 
 //     //autoSubmit JQ
 
-
-
-
 // // function readFormData() {
 // //     formData["fname"] = document.getElementById("fname").value;
 // //     formData["lname"] = document.getElementById("lname").value;
@@ -264,50 +257,43 @@
 // //  }  
 
 
-
-
-
-
-function hideError(name) {
-    // console.log(name)
-    if(name == 'fname') {
-        let fnameErr = document.getElementById('fname-err');
-        document.getElementById("fname").classList.remove('errorEffect');
-        fnameErr.textContent = "";
-    }
-    else if(name == 'password') {
-        let passErr = document.getElementById('pass-err');
-        document.getElementById("pass").classList.remove('errorEffect');
-        passErr.textContent = "";
-    }
-    else if(name == "phoneNumber") {
-        let phnoErr = document.getElementById('phno-err');
-        document.getElementById("phno").classList.remove('errorEffect');
-        phnoErr.textContent = "";
-    }
-    else if(name == 'email'){
-        let emailErr = document.getElementById('email-err');
-        document.getElementById("email").classList.remove('errorEffect');
-        emailErr.textContent = "";
-    }
-    else if(name == 'gender') {
-        let genderErr = document.getElementById('gender-err');
-        genderErr.textContent = "";
-    }
-    else if(name == 'pin') {
-        let pinErr = document.getElementById('pin-err');
-        document.getElementById("pin").classList.remove('errorEffect');
-        pinErr.textContent = "";
-    }
-    else if(name == 'terms') {
-        let termsErr = document.getElementById('terms-err');
-        document.getElementById("terms").classList.remove('errorEffect');
-        termsErr.textContent = "";
-    }
-    
-    
+// function hideError(name) {
+//     if(name == 'fname') {
+//         let fnameErr = document.getElementById('fname-err');
+//         document.getElementById("fname").classList.remove('errorEffect');
+//         fnameErr.textContent = "";
+//     }
+//     else if(name == 'password') {
+//         let passErr = document.getElementById('pass-err');
+//         document.getElementById("pass").classList.remove('errorEffect');
+//         passErr.textContent = "";
+//     }
+//     else if(name == "phoneNumber") {
+//         let phnoErr = document.getElementById('phno-err');
+//         document.getElementById("phno").classList.remove('errorEffect');
+//         phnoErr.textContent = "";
+//     }
+//     else if(name == 'email'){
+//         let emailErr = document.getElementById('email-err');
+//         document.getElementById("email").classList.remove('errorEffect');
+//         emailErr.textContent = "";
+//     }
+//     else if(name == 'gender') {
+//         let genderErr = document.getElementById('gender-err');
+//         genderErr.textContent = "";
+//     }
+//     else if(name == 'pin') {
+//         let pinErr = document.getElementById('pin-err');
+//         document.getElementById("pin").classList.remove('errorEffect');
+//         pinErr.textContent = "";
+//     }
+//     else if(name == 'terms') {
+//         let termsErr = document.getElementById('terms-err');
+//         document.getElementById("terms").classList.remove('errorEffect');
+//         termsErr.textContent = "";
+//     }
    
-}
+// }
 
   
  

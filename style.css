@@ -67,6 +67,7 @@ input::placeholder {
 }
 
 .inp-typ1 ,.inp-addr{
+    outline: none;
     border-radius: 10px;
     height: 30px;
     padding: 5px;
@@ -84,8 +85,10 @@ input::placeholder {
 
 input[type='radio']{
     /* appearance: none; */
+    height: 20px;
     width: 8%;
 }
+
 
 .inp-addr {
     margin: 5px ;
@@ -106,27 +109,22 @@ input[type='radio']{
 .password-toggle-icon {
     margin-right: 12px;
     position: absolute;
-    top: 72%;
+    top: 59.5%;
     right: 10px;
     transform: translateY(-50%);
     cursor: pointer; 
 }
   
-.password-toggle-icon i {
+#eye {
     font-size: calc(5px + 1vw);
     line-height: 1;
     color: #333;
     /* margin-bottom: 20px; */
 }
-.eyeAdd {
-    color: #333;
-    margin-right: 12px;
-    position: absolute;
-    top: 57%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer; 
-} 
+input[type='password'] {
+    width: 100%;
+}
+
 .password-toggle-icon i:hover {
     color: #b98888;
 }
@@ -165,7 +163,7 @@ label{
     justify-content: flex-start;
 }
 
-#gendr {
+#gender {
     padding: 7px;
 }
 
@@ -254,7 +252,7 @@ table:hover {
 .recomandation {
     display: none;
 }
-input[name='fname']:focus~.recomandation   {
+.warning:focus~.recomandation   {
     font-size: calc(1px + 0.9vw);
     font-family: sans-serif;
     display:inline;
@@ -269,9 +267,9 @@ input[name='password']:focus~.recomandation   {
     font-family: sans-serif;
     display:inline;
 }
-input[name='password']:focus~.eyeAdd{
+/* input[name='password']:focus~.eyeAdd{
     top: 39%;
-}
+} */
 input[name='phoneNumber']:focus~.recomandation   {
     font-size: calc(1px + 0.9vw);
     font-family: sans-serif;
@@ -287,6 +285,112 @@ input[name='pin']:focus~.recomandation   {
     font-family: sans-serif;
     display:inline;
 }
+    /* Wrapper and fullwidth is to fix the position of icon */
+.wrapper{
+    position: relative;
+}
+.fullWidth{
+    width: 100%;
+}
+.warning {
+    font-size: calc(1px + 1vw);
+    margin-right: 12px;
+    position: absolute;
+    top: 59.5%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
 
 
 
+select:hover {
+    box-shadow: 0px 0px 20px 3px whitesmoke;
+}
+.submitPopup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(1);
+    background-color:bisque;
+    color: black;
+    box-shadow: 10px 10px 5px rgb(138, 135, 135);
+    width: 25%;
+    height: calc(30px + 15vw);
+    display: none;
+    border: 2px solid black;
+    
+}
+
+.submitContent {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: calc(1px + 0.5vw);
+    padding: calc(1px + 0.5vw);
+}
+#successIcon {
+    position: relative;
+    left: 35%;
+    font-size: calc(5px + 5vw);
+    margin: calc(1px + 0.2vw);
+    padding: calc(1px + 0.2vw);
+}
+.submitContent>h4,p {
+    padding: calc(1px + 0.5vw);
+}
+.submitContent>p {
+    font-size: calc(3px + 1vw);
+}
+        /* FOr delete pop up */
+.deletePopup {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(1);
+    background-color:bisque;
+    /* display: none; */
+    color: black;
+    box-shadow: 10px 10px 5px rgb(138, 135, 135);
+    width: 25%;
+    height: calc(30px + 15vw);
+}
+.deleteContent {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: calc(1px + 0.5vw);
+    padding: calc(1px + 0.5vw);
+}
+#deleteIcon {
+    position: relative;
+    left: 35%;
+    font-size: calc(5px + 5vw);
+    margin: calc(1px + 0.2vw);
+    padding: calc(1px + 0.2vw);
+}
+.deleteContent>h4,p {
+    padding: calc(1px + 0.5vw);
+}
+.deleteContent>p {
+    font-size: calc(3px + 1vw);
+}
+.btn {
+    border: none;
+    margin: 3px;
+}
+#btnCancelPopup {
+    background-color: beige;
+    margin: 3px;
+    display: flex;
+    float: right;
+    padding: calc(1px + 0.5vw);
+}
+#btnDeletePopup {
+    background-color: #ff3333;
+    margin: 3px;
+    display: flex;
+    float: right;
+    padding: calc(1px + 0.5vw);
+}
+.showPopup {
+    display: block;
+    /* background: blur(3px); */
+}

@@ -26,7 +26,11 @@
                     <div class="input-name">
                         <label for="fname" class="redStar">First Name</label>
 
-                        <input type="text" name="fname" placeholder="Enter Firstname" class="inp-typ1" id="fname" oninput="hideError(name)">
+                        <div class="wrapper ">
+                            <input type="text" name="fname" placeholder="Enter Firstname" class="inp-typ1 fullWidth" id="fname" >
+                            <i class="fa-solid fa-triangle-exclamation warning" style="color: #FFD43B;" 
+                            ></i>
+                        </div>
 
                         <span class="recomandation">Should not contain any symbol or digit...</span>
 
@@ -36,8 +40,10 @@
 
                     <div class="input-name">
                         <label for="lname">Last Name</label>
-
-                        <input type="text" name="lname" placeholder="Enter Lastname" class="inp-typ1" id="lname">
+                        <div class="wrapper">
+                            <input type="text" name="lname" placeholder="Enter Lastname" class="inp-typ1 fullWidth" id="lname">
+                            <i class="fa-solid fa-triangle-exclamation warning" style="color: #FFD43B;"></i>
+                        </div>
 
                         <span id="lname-err" class="err-msg"></span>
 
@@ -47,13 +53,12 @@
                     <div class="input-name">
                         <label for="password" class="redStar">Password</label>
 
-                        
-                        <input type="password" name="password"
-                        placeholder="Password"
-                        class="inp-typ1 redStar" id="pass" oninput="hideError(name)">
-                        <span class="recomandation">Should contain atleast 6 character atmost 10 including a symbol,a digit,capital and small character...</span>
-                        <span class="password-toggle-icon" id="eye" ><i class="fas fa-eye"
-                                ></i></span>
+                        <div class="wrapper">
+                            <input type="password" name="password" placeholder="Password" class="inp-typ1 redStar" id="pass">
+                              <i class="fas fa-eye password-toggle-icon" id="eye"></i>
+                        </div>
+
+                        <span class="recomandation">Should contain <b>atleast 6 and atmost 10 character</b> including <b>a symbol,a digit,capital and small character</b>...</span>
 
 
                         <span id="pass-err" class="err-msg"></span>
@@ -70,8 +75,10 @@
                             <option value="+61">+61 (Australia)</option>
                             <!-- Add more country codes as needed -->
                         </select>
-
-                        <input type="number" name="phoneNumber" placeholder="eg:123456" class="inp-typ1" id="phno" oninput="hideError(name)">
+                        <div class="wrapper">
+                            <input type="number" name="phoneNumber" placeholder="eg:123456" class="inp-typ1 fullWidth" id="phno">
+                            <i class="fa-solid fa-triangle-exclamation warning" style="color: #FFD43B;"></i>
+                        </div>
 
                         <span id="phno-err" class="err-msg"></span>
 
@@ -81,8 +88,10 @@
                     <div class="input-name">
                         <label for="email" class="redStar">Email</label>
 
-                        <input type="email" name="email" placeholder="eg:example@email.com " class="inp-typ1 redStar"
-                            id="email" oninput="hideError(name)" >
+                        <div class="wrapper">
+                            <input type="email" name="email" placeholder="eg:example@email.com " class="inp-typ1 redStar fullWidth" id="email" >
+                            <i class="fa-solid fa-triangle-exclamation warning" style="color: #FFD43B;"></i>
+                        </div>
 
                         <span id="email-err" class="err-msg"></span>
 
@@ -90,12 +99,12 @@
 
                     </div>
 
-                    <div id="gendr">
+                    <div id="gender">
                         <label for="gender" class="redStar">Gender</label>
 
-                        <input type="radio" name="gender" value="Male" oninput="hideError(name)">Male
-                        <input type="radio" name="gender" value="Female" oninput="hideError(name)">Female
-                        <input type="radio" name="gender" value="Others" oninput="hideError(name)">Others
+                        <input type="radio" name="gender" value="Male"  id="male">Male
+                        <input type="radio" name="gender" value="Female" id="female">Female
+                        <input type="radio" name="gender" value="Others" id="others">Others
 
                         <span id="gender-err" class="err-msg"></span>
                     </div>
@@ -106,7 +115,14 @@
                         <div class="input-address">
                             <label for="">Country/Region</label>
 
-                            <input type="text" placeholder="Country or Region" class="inp-addr" id="country" >
+                            <!-- <input type="text" placeholder="Country or Region" class="inp-addr" id="country" > -->
+                             <select name="country" id="country" class="inp-addr">
+                                <option value="" >Select Country</option>
+                                <option value="India">India</option>
+                                <option value="USA">USA</option>
+                                <option value="Australia">Australia</option>
+                                <option value="Canada">Canada</option>
+                             </select>
 
                             <span id="country-err" class="err-msg"></span>
                         </div>
@@ -114,14 +130,21 @@
                         <div class="input-address">
                             <label for="">State</label>
 
-                            <input type="text" placeholder="State" class="inp-addr" id="state">
+                            <!-- <input type="text" placeholder="State" class="inp-addr" id="state"> -->
+
+                            <select name="state" id="state" class="inp-addr">
+                                <option value="" selected >Select State</option>
+                             </select>
 
                             <span id="state-err" class="err-msg"></span>
                         </div>
 
                         <div class="input-address">
                             <label for="">City</label>
-                            <input type="text" placeholder="City" class="inp-addr" id="city">
+                            <!-- <input type="text" placeholder="City" class="inp-addr" id="city"> -->
+                            <select name="city" id="city" class="inp-addr">
+                                <option value="" selected >Select City</option>
+                            </select>
                         </div>
 
                         <div class="input-address">
@@ -132,7 +155,10 @@
                         <div class="input-address">
                             <label for="" class="redStar">Pincode</label>
 
-                            <input type="text" placeholder="Pincode" class="inp-addr " name="pin" id="pin" oninput="hideError(name)">
+                            <div class="wrapper">
+                                <input type="text" placeholder="Pincode" class="inp-addr fullWidth" name="pin" id="pin" >
+                                <i class="fa-solid fa-triangle-exclamation warning" style="color: #FFD43B;"></i>
+                            </div>
 
                             <span id="pin-err" class="err-msg"></span>
 
@@ -142,7 +168,7 @@
                     </div>
 
                     <div id="check">
-                        <input type="checkbox" name="terms" id="terms" oninput="hideError(name)">
+                        <input type="checkbox" name="terms" id="terms">
 
                         <label for="terms">I accept the <a href="#">Terms & Condition</a></label>
 
@@ -184,6 +210,25 @@
 
         </div>
     </div>
+    <div class="submitPopup">
+        <div class="submitContent">
+            <span><i class="fa-regular fa-circle-check fa-beat" style="color: #31ed47;" id="successIcon"></i></span>
+            <h4>THANK YOU</h4>
+            <p>Your data has been saved successfully...</p>
+        </div>
+    </div>
+
+    <div class="deletePopup">
+        <div class="deleteContent">
+            <span><i class="fa-solid fa-trash-can fa-fade" style="color: #f40b0b;" id="deleteIcon"></i></span>
+            <h4>DELETE</h4>
+            <p>Are you sure, you want to delete?</p>
+            <div class="btn">
+                <button id="btnDeletePopup"><b>DELETE</b></button>
+                <button id="btnCancelPopup"><b>CENCEL</b></button>
+            </div>
+        </div>
+    </div>
 
        <!-- jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -192,6 +237,7 @@
     <script src="./js/formModule.js"></script>
     <script src="./js/tableModule.js"></script>
     <script src="./js/validationModule.js"></script>
+    <script src="./js/pageModule.js"></script>
 </body>
 
 </html>
