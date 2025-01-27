@@ -122,7 +122,7 @@ input[type='radio']{
     /* margin-bottom: 20px; */
 }
 input[type='password'] {
-    width: 100%;
+    width: 98%;
 }
 
 .password-toggle-icon i:hover {
@@ -250,47 +250,17 @@ table:hover {
     box-shadow: 0px 0px 20px 3px red;
 }
 .recomandation {
+    font-size: calc(1px + 0.9vw);
+    font-family: sans-serif;
     display: none;
 }
-.warning:focus~.recomandation   {
-    font-size: calc(1px + 0.9vw);
-    font-family: sans-serif;
-    display:inline;
-}
-input[name='lname']:focus~.recomandation   {
-    font-size: calc(1px + 0.9vw);
-    font-family: sans-serif;
-    display:inline;
-}
-input[name='password']:focus~.recomandation   {
-    font-size: calc(1px + 0.9vw);
-    font-family: sans-serif;
-    display:inline;
-}
-/* input[name='password']:focus~.eyeAdd{
-    top: 39%;
-} */
-input[name='phoneNumber']:focus~.recomandation   {
-    font-size: calc(1px + 0.9vw);
-    font-family: sans-serif;
-    display:inline;
-}
-input[name='email']:focus~.recomandation   {
-    font-size: calc(1px + 0.9vw);
-    font-family: sans-serif;
-    display:inline;
-}
-input[name='pin']:focus~.recomandation   {
-    font-size: calc(1px + 0.9vw);
-    font-family: sans-serif;
-    display:inline;
-}
+
     /* Wrapper and fullwidth is to fix the position of icon */
 .wrapper{
     position: relative;
 }
 .fullWidth{
-    width: 100%;
+    width: 98%;
 }
 .warning {
     font-size: calc(1px + 1vw);
@@ -319,7 +289,7 @@ select:hover {
     height: calc(30px + 15vw);
     display: none;
     border: 2px solid black;
-    
+    z-index: 2;
 }
 
 .submitContent {
@@ -353,6 +323,7 @@ select:hover {
     box-shadow: 10px 10px 5px rgb(138, 135, 135);
     width: 25%;
     height: calc(30px + 15vw);
+    z-index: 2;
 }
 .deleteContent {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -382,6 +353,14 @@ select:hover {
     display: flex;
     float: right;
     padding: calc(1px + 0.5vw);
+    border: none;
+    border-radius: 15px;
+    border: 2px solid grey;
+    box-shadow: 0 9px #999;
+}
+#btnCancelPopup:active {
+    box-shadow: 0 5px #555151;
+    transform: translateY(4px);
 }
 #btnDeletePopup {
     background-color: #ff3333;
@@ -389,8 +368,20 @@ select:hover {
     display: flex;
     float: right;
     padding: calc(1px + 0.5vw);
+    border: none;
+    border-radius: 15px;
+    border: 2px solid grey;
+    box-shadow: 0 9px #999;
 }
+#btnCancelPopup:active {
+    box-shadow: 0 5px #555151;
+    transform: translateY(4px);
+}
+
 .showPopup {
     display: block;
     /* background: blur(3px); */
+}
+.doBlur {
+    filter: blur(8px);
 }

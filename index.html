@@ -28,11 +28,10 @@
 
                         <div class="wrapper ">
                             <input type="text" name="fname" placeholder="Enter Firstname" class="inp-typ1 fullWidth" id="fname" >
-                            <i class="fa-solid fa-triangle-exclamation warning" style="color: #FFD43B;" 
-                            ></i>
+                            <i class="fa-solid fa-circle-info warning" style="color: #FFD43B;" tabindex="0" id="fname-warn" ></i>
                         </div>
 
-                        <span class="recomandation">Should not contain any symbol or digit...</span>
+                        <span class="recomandation" id="fname-recom">Firstname doesn't contain any symbol or digit...</span>
 
                         <span id="fname-err" class="err-msg"></span>
 
@@ -42,12 +41,12 @@
                         <label for="lname">Last Name</label>
                         <div class="wrapper">
                             <input type="text" name="lname" placeholder="Enter Lastname" class="inp-typ1 fullWidth" id="lname">
-                            <i class="fa-solid fa-triangle-exclamation warning" style="color: #FFD43B;"></i>
+                            <i class="fa-solid fa-circle-info warning" style="color: #FFD43B;" tabindex="0" id="lname-warn"></i>
                         </div>
 
                         <span id="lname-err" class="err-msg"></span>
 
-                        <span class="recomandation">Should not contain any symbol or digit...</span>
+                        <span class="recomandation" id="lname-recom">Lastname doesn't contain any symbol or digit...</span>
                     </div>
 
                     <div class="input-name">
@@ -58,7 +57,7 @@
                               <i class="fas fa-eye password-toggle-icon" id="eye"></i>
                         </div>
 
-                        <span class="recomandation">Should contain <b>atleast 6 and atmost 10 character</b> including <b>a symbol,a digit,capital and small character</b>...</span>
+                        <span class="recomandation" id="pass-recom">Password contains <b>atleast 6 and atmost 10 character</b> including <b>a symbol,a digit,capital and small character</b>...</span>
 
 
                         <span id="pass-err" class="err-msg"></span>
@@ -77,12 +76,12 @@
                         </select>
                         <div class="wrapper">
                             <input type="number" name="phoneNumber" placeholder="eg:123456" class="inp-typ1 fullWidth" id="phno">
-                            <i class="fa-solid fa-triangle-exclamation warning" style="color: #FFD43B;"></i>
+                            <i class="fa-solid fa-circle-info warning" style="color: #FFD43B;" tabindex="0" id="phno-warn"></i>
                         </div>
 
                         <span id="phno-err" class="err-msg"></span>
 
-                        <span class="recomandation">Should contain only digits...</span>
+                        <span class="recomandation" id="phno-recom">Phone no. contains only <b>10 digits...</b></span>
                     </div>
 
                     <div class="input-name">
@@ -90,12 +89,12 @@
 
                         <div class="wrapper">
                             <input type="email" name="email" placeholder="eg:example@email.com " class="inp-typ1 redStar fullWidth" id="email" >
-                            <i class="fa-solid fa-triangle-exclamation warning" style="color: #FFD43B;"></i>
+                            <i class="fa-solid fa-circle-info warning" style="color: #FFD43B;" tabindex="0" id="email-warn"></i>
                         </div>
 
                         <span id="email-err" class="err-msg"></span>
 
-                        <span class="recomandation">Should be in email format...</span>
+                        <span class="recomandation" id="email-recom">Input should be in email format...</span>
 
                     </div>
 
@@ -157,12 +156,12 @@
 
                             <div class="wrapper">
                                 <input type="text" placeholder="Pincode" class="inp-addr fullWidth" name="pin" id="pin" >
-                                <i class="fa-solid fa-triangle-exclamation warning" style="color: #FFD43B;"></i>
+                                <i class="fa-solid fa-circle-info warning" style="color: #FFD43B;" tabindex="0" id="pin-warn"></i>
                             </div>
 
                             <span id="pin-err" class="err-msg"></span>
 
-                            <span class="recomandation">Should contain only 5 or 6 digit...</span>
+                            <span class="recomandation" id="pin-recom">Pin code has only 5 or 6 digit...</span>
                         </div>
 
                     </div>

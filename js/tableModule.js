@@ -130,13 +130,16 @@ var tableModule = (function($)
     function deleteCurRow() {
         $(document).on('click', '.btnDelete', function() {
             let temp = this;
+            $('.container').addClass('doBlur');
             pageModule.displayDeletePopup();
             $("#btnDeletePopup").on('click',function(){
                 $(temp).closest('tr').remove();  // Remove the  row (tr) that clicked the button .btnDelete
                 $(".deletePopup").removeClass('showPopup');
+                $('.container').removeClass('doBlur');
             })
             $("#btnCancelPopup").on('click',function(){
                 $(".deletePopup").removeClass('showPopup');
+                $('.container').removeClass('doBlur');
                 temp = null;
             })
         });

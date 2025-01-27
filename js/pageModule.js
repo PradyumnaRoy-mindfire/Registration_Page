@@ -1,5 +1,44 @@
 var pageModule = (function($){
-    function hideError(name) {
+    function recomandation(){
+        $("#fname-warn").on('focus',function(){
+            $("#fname-recom").fadeIn();
+            $("#fname-warn").on('blur',function(){
+                $("#fname-recom").fadeOut();
+            });
+        });
+        $("#lname-warn").on('focus',function(){
+            $("#lname-recom").fadeIn();
+            $("#lname-warn").on('blur',function(){
+                $("#lname-recom").fadeOut();
+            });
+        });
+        $("#phno-warn").on('focus',function(){
+            $("#phno-recom").fadeIn();
+            $("#phno-warn").on('blur',function(){
+                $("#phno-recom").fadeOut();
+            });
+        });
+        $("#email-warn").on('focus',function(){
+            $("#email-recom").fadeIn();
+            $("#email-warn").on('blur',function(){
+                $("#email-recom").fadeOut();
+            });
+        });
+        $("#pin-warn").on('focus',function(){
+            $("#pin-recom").fadeIn();
+            $("#pin-warn").on('blur',function() {
+                $("#pin-recom").fadeOut();
+            })
+        });
+        $("#pass").on('focus',function(){
+            $("#pass-recom").fadeIn();
+            $("#pass").on('blur',function() {
+                $("#pass-recom").fadeOut();
+            })
+        });
+
+    }
+    function hideError() {
         $("#fname").on('input',function() {
             $("#fname").removeClass('errorEffect');
             $("#fname-err").text("");
@@ -50,9 +89,11 @@ var pageModule = (function($){
         });
     }
     function displaySubmitPopup() {
-        $(".submitPopup").addClass('showPopup');
+        $(".container").addClass("doBlur")
+        $(".submitPopup").show();
         setTimeout(function() {
             $(".submitPopup").hide();
+            $(".container").removeClass("doBlur")
         },1000)
     }
 
@@ -83,11 +124,15 @@ var pageModule = (function($){
             }
        }
        $("#country").on('change',function(){
-        // console.log($('#country :selected').text()); // there should be an space b/w '#country' and ':selected'
                 //to show the states in optiions
-            if($('#country :selected').text() == "India") {
                 $("#state").find('option').remove().end();       //it will delete all the rows ,am deleting all the rows as if we select India first it will
                 $("#state").append($(`<option selected disabled >Select State</optiion>`));
+
+                $("#city").find('option').remove().end();       //it will delete all the rows ,am deleting all the rows as if we select India first it will
+                $("#city").append($(`<option selected>Select city</optiion>`));
+
+            if($('#country :selected').text() == "India") {
+                
                 $.each(countryList["India"],function(key,value) {
                     $("#state").append($(`<option>${key}</optiion>`));
                 });
@@ -98,7 +143,8 @@ var pageModule = (function($){
                     $("#city").find('option').remove().end();       //it will delete all the rows ,am deleting all the rows as if we select India first it will
                     $("#city").append($(`<option selected>Select City</optiion>`));
 
-                    countryList["India"][`${selectedState}`].forEach(cityName => {
+                  
+                    countryList["India"][`${selectedState}`]?.forEach(cityName => {    
                         $("#city").append($(`<option>${cityName}</optiion>`));
                     });
                 });
@@ -107,8 +153,6 @@ var pageModule = (function($){
             }
 
             else if($('#country :selected').text() == "USA") {
-                $("#state").find('option').remove().end()
-                $("#state").append($(`<option selected>Select State</optiion>`));
                 $.each(countryList["USA"],function(key,value) {
                     $("#state").append($(`<option>${key}</optiion>`));
                 });
@@ -118,15 +162,13 @@ var pageModule = (function($){
                     $("#city").find('option').remove().end();       //it will delete all the rows ,am deleting all the rows as if we select India first it will
                     $("#city").append($(`<option selected>Select city</optiion>`));
 
-                    countryList["USA"][`${selectedState}`].forEach(cityName => {
+                    countryList["USA"][`${selectedState}`]?.forEach(cityName => {
                         $("#city").append($(`<option>${cityName}</optiion>`));
                     });
                 });
             }
 
             else if($('#country :selected').text() == "Australia") {
-                $("#state").find('option').remove().end();
-                $("#state").append($(`<option selected>Select State</optiion>`));
                 $.each(countryList["Australia"],function(key,value) {
                     $("#state").append($(`<option>${key}</optiion>`));
                 });
@@ -134,7 +176,8 @@ var pageModule = (function($){
                 $("#state").on('change', function(){
                     let selectedState = $('#state :selected').text();
                     $("#city").find('option').remove().end();       //it will delete all the rows ,am deleting all the rows as if we select India first it will
-                    $("#city").append($(`<option selected>Select city</optiion>`));
+                    $("#city").append($(`<option selected disabled>Select city</optiion>`));
+                    
 
                     countryList["Australia"][`${selectedState}`].forEach(cityName => {
                         $("#city").append($(`<option>${cityName}</optiion>`));
@@ -142,8 +185,6 @@ var pageModule = (function($){
                 });
             }
             else if($('#country :selected').text() == "Canada") {
-                $("#state").find('option').remove().end();
-                $("#state").append($(`<option>Select State</optiion>`));
                 $.each(countryList["Canada"],function(key,value) {
                     $("#state").append($(`<option>${key}</optiion>`));
                 });
@@ -153,7 +194,7 @@ var pageModule = (function($){
                     $("#city").find('option').remove().end();       //it will delete all the rows ,am deleting all the rows as if we select India first it will
                     $("#city").append($(`<option>Select City</optiion>`));
 
-                    countryList["Canada"][`${selectedState}`].forEach(cityName => {
+                    countryList["Canada"][`${selectedState}`]?.forEach(cityName => {
                         $("#city").append($(`<option>${cityName}</optiion>`));
                     });
                 });
@@ -167,6 +208,7 @@ var pageModule = (function($){
         hideError();
         showHiddenPassword();
         addressDropdown();
+        recomandation();
     }
     return {
         init:init,

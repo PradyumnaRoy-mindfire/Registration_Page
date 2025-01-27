@@ -20,7 +20,6 @@ var formModule = (function($){
            
         });
         function readFormData() {
-            console.log(formData);
             formData.fname = $('#fname').val();
             // formData["fname"] = $('#fname').val();
             formData["lname"] = $('#lname').val();
@@ -53,16 +52,14 @@ var formModule = (function($){
             formData["terms"] = $('#terms')[0].checked;
             formData.index = i++;  
             localStorage.setItem("formData",JSON.stringify(formData));
-            
-            // resetForm();
-            // console.log(formData.index);
-            // tableModule.showData(); 
+             
             ValidAndcontrolShow(formData);
         }
 
     }
     function resetForm() {
         $("#form")[0].reset(); 
+
         // $("#fname").val('');
         // $("#lname").val('');
         // $("#phno").val('');
@@ -92,7 +89,6 @@ var formModule = (function($){
         if(isValid == true && selectedRow == null) {
             console.log("Hi");
             resetForm()
-            // alert("Form Submitted Successfully")
             tableModule.showData();
             pageModule.displaySubmitPopup();
         }
@@ -109,14 +105,27 @@ var formModule = (function($){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Initialize the module
 // $(document).ready(function() {
 //     tableModule.init();
 // });
-
-
-
-
 
 
 // var formModule = (function($){
